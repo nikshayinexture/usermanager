@@ -60,6 +60,7 @@
 	<div class="sidebar">
 	
 	<a href="#" th:href="@{/user/index}" class="item"> Home </a>
+	<a href="#" th:href="@{/user/display-address}" class="item"> Saved Addresses </a>
 	<a href="#" th:href="@{/user/add-address}" class="item"> Add Address </a>
 	<a href="#" th:href="@{/logout}" class="item"> Logout </a>
 	<div class="divider> </div>
@@ -72,10 +73,20 @@
     
     <div class="content">
     
+    <!-- Message Box -->
+    	
+    	<div th:if="${session.message}" class="container">
+   			 <div th:classappend="${'alert='+session.message.type}" class="alert" role="alert">
+    			
+    			<span th:text="${session.message.content}"></span>
+    			
+   			</div>
+   			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+     	</div>
+      
+   	<div th:replace="${content}"></div>
     
-   		<div th:replace="${content}"></div>
-    
-    </div>
+</div>
 
 	<!-- Area Content End -->
 	

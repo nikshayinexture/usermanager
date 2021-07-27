@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="address")
 public class Address {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int a_id;

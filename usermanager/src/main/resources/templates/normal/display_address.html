@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/common::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>About</title>
+</head>
+<body>
+	<section>
+	<div class="card mr-3 ml-2">
+	<div class="card-body">
+	
+	<h1>Address Display Page</h1>
+	
+	<!-- START - Table For Displaying Addresses -->
+	
+	<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">House No.</th>
+      <th scope="col">City</th>
+      <th scope="col">Landmark</th>
+      <th scope="col">State</th>
+      <th scope="col">Country</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Zip Code</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+  
+    <tr th:each="a : ${address}">
+      <th scope="row" th:text="${a.a_id}">1</th>
+      <td th:text="${a.house_no}">Nikshay</td>
+      <td th:text="${a.city}">Jain</td>
+      <td th:text="${a.landmark}">Hi</td>
+      <td th:text="${a.state}">Hi</td>
+      <td th:text="${a.country}">Hi</td>
+      <td th:text="${a.phone}">Hi</td>
+      <td th:text="${a.zip_code}">Hi</td>
+      <td>
+      
+      <button class="btn btn-danger btn-sm">Delete</button>
+      <button class="btn btn-primary btn-sm">Update</button>
+      
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+	
+	<!-- END - Table For Displaying Addresses -->
+	
+	</div>
+	</div>
+	
+	</section>
+</body>
+</html>
