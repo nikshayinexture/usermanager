@@ -32,7 +32,13 @@
   
     <tr th:each="a : ${address}">
       <th scope="row" th:text="${a.a_id}">1</th>
-      <td th:text="${a.house_no}">Nikshay</td>
+      <td>
+      
+      <a href="#" th:href="@{'/user/'+${a.a_id}+'/address'}" >
+      
+      <span >
+      
+      </td>
       <td th:text="${a.city}">Jain</td>
       <td th:text="${a.landmark}">Hi</td>
       <td th:text="${a.state}">Hi</td>
@@ -41,8 +47,14 @@
       <td th:text="${a.zip_code}">Hi</td>
       <td>
       
-      <button class="btn btn-danger btn-sm">Delete</button>
-      <button class="btn btn-primary btn-sm">Update</button>
+      <a href="#" th:onclick="/deleteAddress(${a.a_id})/" class="btn btn-danger btn-sm">Delete</button>
+      
+      <
+     	 <form method="post" th:action="@{'/user/update-address/'+${a.a_id}}" class="mt-2">
+     
+      		<button type="submit" class="btn btn-primary btn-sm">Update</button>
+      
+     	 </form>
       
       </td>
     </tr>
