@@ -11,7 +11,7 @@
 
 <div class="card-body">
 
-<h1 class="text-center"> Add Contact <h1>
+<h1 class="text-center"> Add Contact </h1>
 
 <div class="container-fluid mt-1">
 
@@ -41,6 +41,7 @@ class="mt-2"
     placeholder="Enter your house number here"
     required
     >
+    </div>
 
 <!-- City -->
   
@@ -56,6 +57,7 @@ class="mt-2"
     placeholder="Enter your city here"
     required
     >
+    </div>
     
   <!-- Landmark -->
   
@@ -70,7 +72,8 @@ class="mt-2"
     aria-describedby="emailHelp" 
     placeholder="Enter your landmark here"
     required
-    >  
+    >
+    </div>
     
     <!-- State -->
   
@@ -86,7 +89,8 @@ class="mt-2"
     placeholder="Enter your state here"
     required
     >  
-    
+
+    </div>    
     <!-- Country -->
   
   <div class="mb-3">
@@ -98,10 +102,11 @@ class="mt-2"
     th:classappend="${#fields.hasErrors('country') ? 'is-invalid':''}"
     id="country" 
     aria-describedby="emailHelp" 
-    placeholder="Enter your landmark here"
+    placeholder="Enter your country here"
     required
     >  
     
+    </div>
     <!-- Phone -->
   
   <div class="mb-3">
@@ -113,10 +118,11 @@ class="mt-2"
     th:classappend="${#fields.hasErrors('phone') ? 'is-invalid':''}"
     id="phone" 
     aria-describedby="emailHelp" 
-    placeholder="Enter your landmark here"
+    placeholder="Enter your phone here"
     required
     >  
     
+    </div>
     <!-- Zip Code -->
   
   <div class="mb-3">
@@ -132,8 +138,10 @@ class="mt-2"
     required
     >  
     
+    </div>
 <div class="container text-center">
-<button class="btn btn-outline-primary> Save Address </button>
+<button class="btn btn-outline-primary"> Save Address </button>
+
 </div>
 
 </form>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="common::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>About</title>
+</head>
+<body>
+<section><div id="login">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" style="height: 200px" class="col-md-12">
+                      
+                        <div class="alert alert-success" role="alert">
+  							OTP Sent!
+						</div>
+
+                        <form method="post" th:action="@{/send-otp}">
+                        
+                        <div class="form-group">
+                        
+                        <input name="otp" required="required" type="text" placeholder="Enter OTP here" class="form-control" />
+                        
+                        </div>
+                        
+                        <br>
+                        
+                        <div class="container text-center">
+                        <button type="submit" class="btn btn-success"> Click Here To Verify </button>
+                        </div>
+                        
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html> 

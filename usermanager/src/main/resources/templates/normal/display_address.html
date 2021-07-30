@@ -5,11 +5,14 @@
 <title>About</title>
 </head>
 <body>
-	<section>
-	<div class="card mr-3 ml-2">
+<section>
+	
+	<h1>Saved Addresses </h1>
+	
+	<div class="card">
+	
 	<div class="card-body">
 	
-	<h1>Address Display Page</h1>
 	
 	<!-- START - Table For Displaying Addresses -->
 	
@@ -32,31 +35,36 @@
   
     <tr th:each="a : ${address}">
       <th scope="row" th:text="${a.a_id}">1</th>
-      <td>
       
-      <a href="#" th:href="@{'/user/'+${a.a_id}+'/address'}" >
+      <td >
       
-      <span >
+      <a href="#" th:href="@{'user/'+${a.a_id}+'/address'}">
+      
+      <span th:text="${a.house_no}">
+      
+      </span>
+      
+      </a>
       
       </td>
+      
       <td th:text="${a.city}">Jain</td>
       <td th:text="${a.landmark}">Hi</td>
       <td th:text="${a.state}">Hi</td>
       <td th:text="${a.country}">Hi</td>
       <td th:text="${a.phone}">Hi</td>
       <td th:text="${a.zip_code}">Hi</td>
-      <td>
       
-      <a href="#" th:onclick="/deleteAddress(${a.a_id})/" class="btn btn-danger btn-sm">Delete</button>
+      <td>      
       
-      <
-     	 <form method="post" th:action="@{'/user/update-address/'+${a.a_id}}" class="mt-2">
-     
-      		<button type="submit" class="btn btn-primary btn-sm">Update</button>
+      <form method="post" th:action="@{'/user/update-address/'+${a.a_id}}" class="mt-2">
+      <button type="submit"  class="btn btn-primary btn-small">Update</button>
+      </form>
       
-     	 </form>
+      <a th:href="@{'/user/delete/'+${a.a_id}}" class="btn btn-danger btn-small">Delete</a>
       
       </td>
+      
     </tr>
     
   </tbody>
@@ -64,9 +72,12 @@
 	
 	<!-- END - Table For Displaying Addresses -->
 	
-	</div>
+	
 	</div>
 	
-	</section>
+	
+	</div>
+	
+</section>
 </body>
 </html>

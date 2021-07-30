@@ -7,30 +7,36 @@
 <body>
 	<section>
 	
+	<h1>Address Details</h1>
 	
-			<div class="card mr-3 ml-2">
-			
-				<div class="card-body  th:if=${address}">
-			
-					<div class="container">
-			
-						<h3>
-			
-					</div>
-			
-				</div>
-			
-			<h1 th:unless="${address}"> Access Denied </h1>
-			
-			<form method="post" th:action="@{'/user/update-address/'+${address.a_id}}" class="mt-2">
-     
-      			<button type="submit" class="btn btn-block btn-primary btn-sm">Update</button>
-      
-     	 	</form>
-			
-			</div>
-			
-			
+	<div class="card mr-3 ml-3"  th:if=${address}>
+	
+	<div class="card-body">
+	
+	<div class="container">
+	
+	<h3 th:text="${address.house_no}"></h3>
+	
+	<h3 th:text="${address.city}"></h3>
+	
+	<h3 th:text="${address.landmark}"></h3>
+	
+	<h3 th:text="${address.state}"></h3>
+	
+	<h3 th:text="${address.country}"></h3>
+	
+	<h3 th:text="${address.phone}"></h3>
+	
+	<h3 th:text="${address.zip_code}"></h3>
+	
+	</div>
+	
+	</div>	
+	
+	</div>	
+	
+	<h1 class="bg-danger text-white" th:unless="${address}"> Access Denied </h1>
+	
 	</section>
 </body>
 </html>

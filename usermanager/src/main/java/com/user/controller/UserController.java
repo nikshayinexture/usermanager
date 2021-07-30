@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.user.helper.Message;
 import com.user.model.Address;
@@ -24,6 +26,9 @@ import com.user.repository.UserRepository;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -77,7 +82,8 @@ public class UserController {
 		System.out.println("DATA " +address);
 		System.out.println("Address Saved For User");
 		
-		session.setAttribute("message", new Message("Your Address Is Added", "success"));
+		//message success
+		session.setAttribute("message", new Message("Address Added Successfully", "success"));
 		
 		}catch (Exception e) {
 			
@@ -106,7 +112,7 @@ public class UserController {
 	
 	// Handler For Displaying Address Indiviually
 	
-	@RequestMapping("{a_id}/address")
+	@RequestMapping("/{a_id}/address")
 	public String displayAddressDetails(@PathVariable("a_id") Integer a_id, Model model, Principal principal) {
 		
 		System.out.println("Address ID "+a_id);
@@ -139,6 +145,7 @@ public class UserController {
 		
 		address.setUser(null);
 		
+		//Checking
 		this.addressRepository.delete(address);
 		
 		System.out.println("Deleted");
@@ -187,5 +194,52 @@ public class UserController {
 		
 	}
 	
+	//Profile Handler
+	
+	@GetMapping("/profile")
+	public String yourProfile()
+	{
+		return "normal/profile";
+	}
+	
+	//Open Settings Handler
+	
+	@GetMapping("/settings")
+	public String openSetting(Model model)
+	{
+		model.addAttribute("title", "Profile Page");
+		return "normal/settings";
+	}
+	
+	//Change Password
+	
+	@PostMapping("/change-password")
+	public String changePassword(@RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword") String newPassword, Principal principal, HttpSession session)
+	{
+		System.out.println("Old Password -" +oldPassword);
+		System.out.println("Old Password -" +newPassword);
+		
+		String userName = principal.getName();
+		User currentUser = this.userRepository.getUserByUserName(userName);
+
+		System.out.println(currentUser.getPassword());
+	
+		if(this.bCryptPasswordEncoder.matches(oldPassword, currentUser.getPassword()))
+		{
+			//change password
+			currentUser.setPassword(this.bCryptPasswordEncoder.encode(newPassword));
+			this.userRepository.save(currentUser);
+			session.setAttribute("message", new Message("Password Changed Successfully", "success"));
+			
+		}else
+		{
+			//error
+			session.setAttribute("message", new Message("Old Password Is Incorrect", "danger"));
+			return "redirect:/user/settings";
+		}
+		
+		return "/normal/user_profile";
+	}
 	
 }
+
