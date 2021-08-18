@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/common::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>About</title>
+</head>
+<body>
+<section>
+
+<div class="card mr-2 ml-2">
+
+<div class="card-body">
+
+<h1 class="text-center"> Update Contact </h1>
+
+<div class="container-fluid mt-1">
+
+<div class="row">
+
+<div class="col-md-10 offset-md-1">
+
+<form action="#" th:object="${address}"
+enctype="multipart/form-data"
+method="POST"
+th:action="@{/user/process-address}"
+class="mt-2"
+
+>
+
+<!-- House No -->
+  
+  <div class="mb-3">
+    <label for="house_no" class="form-label">House Number</label>
+    <input 
+    th:value="${address.house_no}"
+    name="house_no"
+    type="text" 
+    class="form-control" 
+    th:classappend="${#fields.hasErrors('house_no') ? 'is-invalid':''}"
+    id="house_no" 
+    aria-describedby="emailHelp" 
+    placeholder="Enter your house number here"
+    required
+    >
+    </div>
+
+<!-- City -->
+  
+  <div class="mb-3">
+    <label for="city" class="form-label">City</label>
+    <input 
+    
+    th:value="${address.city}"
+    name="city"
+    type="text" 
+    class="form-control" 
+    th:classappend="${#fields.hasErrors('city') ? 'is-invalid':''}"
+    id="city" 
+    aria-describedby="emailHelp" 
+    placeholder="Enter your city here"
+    required
+    >
+    </div>
+    
+  <!-- Landmark -->
+  
+  <div class="mb-3">
+    <label for="landmark" class="form-label">Landmark</label>
+    <input 
+    th:value="${address.landmark}"
+    name="landmark"
+    type="text" 
+    class="form-control" 
+    th:classappend="${#fields.hasErrors('landmark') ? 'is-invalid':''}"
+    id="landmark" 
+    aria-describedby="emailHelp" 
+    placeholder="Enter your landmark here"
+    required
+    >
+    </div>
+    
+    <!-- State -->
+  
+  <div class="mb-3">
+    <label for="state" class="form-label">State</label>
+    <input 
+    th:value="${address.state}"
+    name="state"
+    type="text" 
+    class="form-control" 
+    th:classappend="${#fields.hasErrors('state') ? 'is-invalid':''}"
+    id="state" 
+    aria-describedby="emailHelp" 
+    placeholder="Enter your state here"
+    required
+    >  
+
+    </div>    
+    <!-- Country -->
+  
+  <div class="mb-3">
+    <label for="country" class="form-label">Country</label>
+    <input 
+    th:value="${address.country}"
+    name="country"
+    type="text" 
+    class="form-control" 
+    th:classappend="${#fields.hasErrors('country') ? 'is-invalid':''}"
+    id="country" 
+    aria-describedby="emailHelp" 
+    placeholder="Enter your country here"
+    required
+    >  
+    
+    </div>
+    <!-- Phone -->
+  
+  <div class="mb-3">
+    <label for="phone" class="form-label">Phone</label>
+    <input 
+    th:value="${address.phone}"
+    name="phone"
+    type="text" 
+    class="form-control" 
+    th:classappend="${#fields.hasErrors('phone') ? 'is-invalid':''}"
+    id="phone" 
+    aria-describedby="emailHelp" 
+    placeholder="Enter your phone here"
+    required
+    >  
+    
+    </div>
+    <!-- Zip Code -->
+  
+  <div class="mb-3">
+    <label for="zip_code" class="form-label">Zip Code</label>
+    <input 
+    th:value="${address.zip_code}"
+    name="zip_code"
+    type="text" 
+    class="form-control" 
+    th:classappend="${#fields.hasErrors('zip_code') ? 'is-invalid':''}"
+    id="zip_code" 
+    aria-describedby="emailHelp" 
+    placeholder="Enter your zip code here"
+    required
+    >  
+    
+    </div>
+<div class="container text-center">
+<button class="btn btn-outline-primary"> Save Changes </button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+</section>
+</body>
+</html>

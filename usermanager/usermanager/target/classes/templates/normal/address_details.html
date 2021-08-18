@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/common::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>About</title>
+</head>
+<body>
+	<section>
+	
+	<h1>Address Details</h1>
+	
+	<div class="card mr-3 ml-3"  th:if=${address}>
+	
+	<div class="card-body">
+	
+	<div class="container">
+	
+	<h3 th:text="${address.house_no}"></h3>
+	
+	<h3 th:text="${address.city}"></h3>
+	
+	<h3 th:text="${address.landmark}"></h3>
+	
+	<h3 th:text="${address.state}"></h3>
+	
+	<h3 th:text="${address.country}"></h3>
+	
+	<h3 th:text="${address.phone}"></h3>
+	
+	<h3 th:text="${address.zip_code}"></h3>
+	
+	</div>
+	
+	</div>	
+	
+	</div>	
+	
+	<h1 class="bg-danger text-white" th:unless="${address}"> Access Denied </h1>
+	
+	</section>
+</body>
+</html>

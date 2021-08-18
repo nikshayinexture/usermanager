@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="common::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Sign Up</title>
+</head>
+<body>
+<section>
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-6 offset-md-3">
+
+<div class="my-card mt-3">
+
+<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert alert-danger" role="alert">
+<p th:text="${session.message.content}">
+</p>
+<th:block th:text="${#session.removeAttribute('message')}">
+</th:block>
+</div>
+
+<h1 class="text-center"> Sign Up </h1>
+
+<form novalidate action="" th:action="@{/do_register}" method="post" th:object="${user}">
+
+<!-- Name Field -->
+  
+  <div class="mb-3">
+    <label for="name_field" class="form-label">Full Name</label>
+    <input 
+    name="name"
+    type="text" 
+    class="form-control" 
+    th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}"
+    id="name_field" 
+    aria-describedby="emailHelp" 
+    placeholder="Enter your full name here"
+    required
+    th:value=${user.name}
+    >
+  		</div>
+  		<div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}">
+      	</div>
+  
+<!-- Email Field -->
+  
+  <div class="mb-3">
+    <label for="email_field" class="form-label">Email</label>
+    <input 
+    name="email"
+    type="email" 
+    class="form-control" 
+    id="email_field" 
+    aria-describedby="emailHelp" 
+    placeholder="Enter your email address here"
+    required
+    th:value=${user.email}
+    >
+  </div>
+  
+<!-- Password Field -->
+  
+  <div class="mb-3">
+    <label for="password_field" class="form-label">Password</label>
+    <input 
+    name="password"
+    type="password" 
+    class="form-control" 
+    id="v_field" 
+    aria-describedby="emailHelp" 
+    placeholder="Enter your password here"
+    required
+    th:value=${user.password}
+    >
+  </div>
+
+<!-- T and C -->
+
+<div class="form-group form-check">
+
+<input type="checkbox" name=tnc class="form-check-input" id="tnc" />
+
+<label for="tnc">Accept Terms And Conditions</label>
+
+</div>
+
+<div class="container text-center">
+
+<button type="submit" class="btn btn-primary">
+	SUBMIT
+</button>
+
+<button type="reset" class="btn btn-warning">
+	RESET
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+</body>
+</html>
